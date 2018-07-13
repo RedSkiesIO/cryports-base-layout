@@ -1,7 +1,7 @@
 # Contributor: James Kirby <james.kirby@atlascityfinace.com>
 # Maintainer: James Kirby <james.kirby@atlascityfinace.com>
 pkgname=alpine-baselayout
-pkgver=4.0.0
+pkgver=3.7.0
 pkgrel=4
 pkgdesc="CryptOS base dir structure and init scripts"
 url="https://git.alpinelinux.org/cgit/aports/tree/main/alpine-baselayout"
