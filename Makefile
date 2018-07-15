@@ -9,7 +9,7 @@ dbuild-cryptos-baselayout-x8664:
 
 .PHONY: dbuild-cryptos-baselayout-armhf
 dbuild-cryptos-baselayout-armhf:
-	docker run -it \
+	docker run \
 		-v `pwd`:/home/builder/cryptos/src \
 		-v ${CRYPORTS_DIR}/_data/abuild:/home/builder/.abuild \
 		-v ${CRYPORTS_DIR}/artifacts/repo:/home/builder/packages \
