@@ -1,26 +1,26 @@
 .PHONY: dbuild-cryptos-baselayout-x8664
 dbuild-cryptos-baselayout-x8664:
 	docker run \
-		-v `pwd`:/home/builder/cryptos/src \
-		-v ${CRYPORTS_DIR}/_data/abuild:/home/builder/.abuild \
-		-v ${CRYPORTS_DIR}/artifacts/repo:/home/builder/packages \
-		dbuild:x8664 \
+		-v ${PWD}:/home/builder/cryptos/src \
+		-v ${KEY_DIR}:/home/builder/.abuild \
+		-v ${PACKAGES_DIR}:/home/builder/packages \
+		registry.gitlab.engr.atlas:443/cryptos/docker-build:x8664 \
 		sh -c "cd cryptos/src && abuild checksum && abuild -R -c"
 
 .PHONY: dbuild-cryptos-baselayout-armhf
 dbuild-cryptos-baselayout-armhf:
 	docker run \
-		-v `pwd`:/home/builder/cryptos/src \
-		-v ${CRYPORTS_DIR}/_data/abuild:/home/builder/.abuild \
-		-v ${CRYPORTS_DIR}/artifacts/repo:/home/builder/packages \
-		dbuild:armhf \
+		-v ${PWD}:/home/builder/cryptos/src \
+		-v ${KEY_DIR}:/home/builder/.abuild \
+		-v ${PACKAGES_DIR}:/home/builder/packages \
+		registry.gitlab.engr.atlas:443/cryptos/docker-build:armhf \
 		sh -c "cd cryptos/src && abuild checksum && abuild -c"
 
 .PHONY: dbuild-cryptos-baselayout-aarch64
 dbuild-cryptos-baselayout-aarch64:
 	docker run \
-		-v `pwd`:/home/builder/cryptos/src \
-		-v ${CRYPORTS_DIR}/_data/abuild:/home/builder/.abuild \
-		-v ${CRYPORTS_DIR}/artifacts/repo:/home/builder/packages \
-		dbuild:aarch64 \
+		-v ${PWD}:/home/builder/cryptos/src \
+		-v ${KEY_DIR}:/home/builder/.abuild \
+		-v ${PACKAGES_DIR}:/home/builder/packages \
+		registry.gitlab.engr.atlas:443/cryptos/docker-build:aarch64 \
 		sh -c "cd cryptos/src && abuild checksum && abuild -c"
