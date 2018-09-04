@@ -1,0 +1,8 @@
+build-master:
+  stage: build
+  script:
+    - make dbuild-cryptos-baselayout-x8664
+    - make dbuild-cryptos-baselayout-armhf
+    - make dbuild-cryptos-baselayout-aarch64
+  only:
+    - master
