@@ -104,6 +104,7 @@ package() {
 		var/spool/cron
 
 	ln -s /run var/run
+	install -d -m 0700 "$pkgdir"/setup
 	install -d -m 0555 var/empty
 	install -d -m 0700 "$pkgdir"/root
 	install -d -m 1777 "$pkgdir"/tmp "$pkgdir"/var/tmp
@@ -130,7 +131,7 @@ package() {
 	EOF
 
 	cat > "$pkgdir"/etc/motd <<-EOF
-		Welcome to CryptOS!
+		Welcome to CryptOS (v3.7.0)!
 
 	EOF
 	cat > "$pkgdir"/etc/sysctl.conf <<-EOF
