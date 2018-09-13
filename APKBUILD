@@ -1,8 +1,8 @@
 # Contributor: James Kirby <james.kirby@atlascityfinace.com>
 # Maintainer: James Kirby <james.kirby@atlascityfinace.com>
 pkgname=alpine-baselayout
-pkgver=3.2.0
-pkgrel=1
+pkgver=3.7.0
+pkgrel=420
 pkgdesc="CryptOS base dir structure and init scripts"
 url="https://git.alpinelinux.org/cgit/aports/tree/main/alpine-baselayout"
 arch="all"
@@ -104,7 +104,6 @@ package() {
 		var/spool/cron
 
 	ln -s /run var/run
-	install -d -m 0700 "$pkgdir"/setup
 	install -d -m 0555 var/empty
 	install -d -m 0700 "$pkgdir"/root
 	install -d -m 1777 "$pkgdir"/tmp "$pkgdir"/var/tmp
