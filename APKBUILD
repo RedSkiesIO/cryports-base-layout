@@ -1,8 +1,8 @@
 # Contributor: James Kirby <james.kirby@atlascityfinace.com>
 # Maintainer: James Kirby <james.kirby@atlascityfinace.com>
 pkgname=alpine-baselayout
-pkgver=3.7.0
-pkgrel=420
+pkgver=3.1.0
+pkgrel=0
 pkgdesc="CryptOS base dir structure and init scripts"
 url="https://git.alpinelinux.org/cgit/aports/tree/main/alpine-baselayout"
 arch="all"
@@ -119,29 +119,63 @@ package() {
 		"$pkgdir"/etc/modprobe.d/
 
 	echo "UTC" > "$pkgdir"/etc/TZ
-	echo "cryptos" > "$pkgdir"/etc/hostname
-	echo "127.0.0.1	localhost localhost.localdomain" > "$pkgdir"/etc/hosts
-	echo "af_packet" >"$pkgdir"/etc/modules
-
+	echo "localhost" > "$pkgdir"/etc/hostname
+	cat > "$pkgdir"/etc/hosts <<-EOF
+		127.0.0.1	localhost localhost.localdomain
+		::1		localhost localhost.localdomain
+	EOF
+	cat > "$pkgdir"/etc/modules <<-EOF
+		af_packet
+		ipv6
+	EOF
 	cat > "$pkgdir"/etc/shells <<-EOF
 		# valid login shells
 		/bin/sh
 		/bin/ash
 	EOF
-
 	cat > "$pkgdir"/etc/motd <<-EOF
-		Welcome to CryptOS (v3.7.0)!
+		Welcome to CryptOS (v3.8.0)!
 
 	EOF
 	cat > "$pkgdir"/etc/sysctl.conf <<-EOF
 		# content of this file will override /etc/sysctl.d/*
 	EOF
 	cat > "$pkgdir"/etc/sysctl.d/00-alpine.conf <<-EOF
+		# Prevents SYN DOS attacks. Applies to ipv6 as well, despite name.
 		net.ipv4.tcp_syncookies = 1
+
+		# Prevents ip spoofing.
 		net.ipv4.conf.default.rp_filter = 1
 		net.ipv4.conf.all.rp_filter = 1
+
+		# Only groups within this id range can use ping.
 		net.ipv4.ping_group_range=999 59999
+
+		# Redirects can potentially be used to maliciously alter hosts
+		# routing tables.
+		net.ipv4.conf.all.accept_redirects = 0
+		net.ipv4.conf.all.secure_redirects = 1
+		net.ipv6.conf.all.accept_redirects = 0
+
+		# The source routing feature includes some known vulnerabilities.
+		net.ipv4.conf.all.accept_source_route = 0
+		net.ipv6.conf.all.accept_source_route = 0
+
+		# See RFC 1337
+		net.ipv4.tcp_rfc1337 = 1
+
+		## Enable IPv6 Privacy Extensions (see RFC4941 and RFC3041)
+		net.ipv6.conf.default.use_tempaddr = 2
+		net.ipv6.conf.all.use_tempaddr = 2
+
+		# Restarts computer after 120 seconds after kernel panic
 		kernel.panic = 120
+
+		# Users should not be able to create soft or hard links to files
+		# which they do not own. This mitigates several privilege
+		# escalation vulnerabilities.
+		fs.protected_hardlinks = 1
+		fs.protected_symlinks = 1
 	EOF
 	cat > "$pkgdir"/etc/fstab <<-EOF
 		/dev/cdrom	/media/cdrom	iso9660	noauto,ro 0 0
