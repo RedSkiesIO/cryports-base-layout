@@ -20,4 +20,3 @@ tty6::respawn:/sbin/getty 38400 tty6
 
 # Stuff to do before rebooting
 ::shutdown:/sbin/openrc shutdown
-

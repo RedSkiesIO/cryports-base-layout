@@ -1,13 +1,3 @@
-/*
- * Create mount directories in fstab
- *
- * Copyright(c) 2008 Natanael Copa <natanael.copa@gmail.com>
- * May be distributed under the terms of GPL-2
- *
- * usage: mkmntdirs [fstab]
- *
- */
-
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -64,4 +54,3 @@ int main(int argc, const char *argv[])
 	endmntent(f);
 	return 0;
 }
-
