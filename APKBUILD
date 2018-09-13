@@ -2,7 +2,7 @@
 # Maintainer: James Kirby <james.kirby@atlascityfinace.com>
 pkgname=alpine-baselayout
 pkgver=3.1.0
-pkgrel=0
+pkgrel=420
 pkgdesc="CryptOS base dir structure and init scripts"
 url="https://git.alpinelinux.org/cgit/aports/tree/main/alpine-baselayout"
 arch="all"
