@@ -108,6 +108,7 @@ package() {
 	install -d -m 0700 "$pkgdir"/root
 	install -d -m 1777 "$pkgdir"/tmp "$pkgdir"/var/tmp
 	install -m755 "$builddir"/mkmntdirs "$pkgdir"/sbin/mkmntdirs
+	install -d -m 0777 "$pkgdir"/setup
 
 	install -m600 "$srcdir"/crontab "$pkgdir"/etc/crontabs/root
 	install -m644 "$srcdir"/color_prompt "$pkgdir"/etc/profile.d/
