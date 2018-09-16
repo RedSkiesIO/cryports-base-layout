@@ -9,6 +9,7 @@ arch="all"
 license="GPL2"
 pkggroups="shadow"
 options="!fhs"
+depends="opennode-base opennode-setup-gui"
 install="$pkgname.pre-install $pkgname.pre-upgrade $pkgname.post-upgrade
 	$pkgname.post-install"
 source="mkmntdirs.c
