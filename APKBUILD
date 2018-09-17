@@ -121,7 +121,7 @@ package() {
 		"$pkgdir"/etc/modprobe.d/
 
 	echo "UTC" > "$pkgdir"/etc/TZ
-	echo "CryptOS" > "$pkgdir"/etc/hostname
+	echo "cryptos" > "$pkgdir"/etc/hostname
 	echo "127.0.0.1	cryptos cryptos.dnet" > "$pkgdir"/etc/hosts
 	echo "af_packet" >"$pkgdir"/etc/modules
 
