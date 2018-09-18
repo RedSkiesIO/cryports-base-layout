@@ -9,7 +9,7 @@ arch="all"
 license="GPL2"
 pkggroups="shadow"
 options="!fhs"
-#depends="opennode-base opennode-setup-gui"
+depends="accore-installer"
 install="$pkgname.pre-install $pkgname.pre-upgrade $pkgname.post-upgrade
 	$pkgname.post-install"
 source="mkmntdirs.c
