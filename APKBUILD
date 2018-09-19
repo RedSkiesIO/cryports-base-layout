@@ -143,6 +143,8 @@ package() {
 		net.ipv4.conf.all.rp_filter = 1
 		net.ipv4.ping_group_range=999 59999
 		kernel.panic = 120
+		net.ipv6.conf.all.disable_ipv6 = 1
+		net.ipv6.conf.default.disable_ipv6=1
 	EOF
 	cat > "$pkgdir"/etc/fstab <<-EOF
 		/dev/cdrom	/media/cdrom	iso9660	noauto,ro 0 0
