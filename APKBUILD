@@ -124,6 +124,7 @@ package() {
 	echo "cryptos" > "$pkgdir"/etc/hostname
 	echo "127.0.0.1	cryptos cryptos.dnet" > "$pkgdir"/etc/hosts
 	echo "af_packet" >"$pkgdir"/etc/modules
+	echo "ipv6" >"$pkgdir"/etc/modules
 
 	cat > "$pkgdir"/etc/shells <<-EOF
 		# valid login shells
