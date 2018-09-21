@@ -15,7 +15,6 @@ install="$pkgname.pre-install $pkgname.pre-upgrade $pkgname.post-upgrade
 source="mkmntdirs.c
 	crontab
 	color_prompt
-
 	aliases.conf
 	blacklist.conf
 	i386.conf
@@ -130,7 +129,7 @@ package() {
 	cat > "$pkgdir"/etc/shells <<-EOF
 		# valid login shells
 		/bin/sh
-		/bin/ash
+		/bin/bash
 	EOF
 
 	cat > "$pkgdir"/etc/motd <<-EOF
