@@ -9,7 +9,7 @@ arch="all"
 license="GPL2"
 pkggroups="shadow"
 options="!fhs"
-depends="accore-installer"
+depends="accore-installer bash"
 install="$pkgname.pre-install $pkgname.pre-upgrade $pkgname.post-upgrade
 	$pkgname.post-install"
 source="mkmntdirs.c
@@ -20,7 +20,7 @@ source="mkmntdirs.c
 	blacklist.conf
 	i386.conf
 	kms.conf
-
+	bashrc
 	group
 	inittab
 	passwd
@@ -111,6 +111,7 @@ package() {
 	install -d -m 1777 "$pkgdir"/tmp "$pkgdir"/var/tmp
 	install -m755 "$builddir"/mkmntdirs "$pkgdir"/sbin/mkmntdirs
 
+	install -m600 "$srcdir"/bashrc "$pkgdir"/root/.bashrc
 	install -m600 "$srcdir"/crontab "$pkgdir"/etc/crontabs/root
 	install -m644 "$srcdir"/color_prompt "$pkgdir"/etc/profile.d/
 	install -m644 \
