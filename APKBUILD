@@ -9,7 +9,7 @@ arch="all"
 license="GPL2"
 pkggroups="shadow"
 options="!fhs"
-depends="accore-installer bash"
+depends="accore bash"
 install="$pkgname.pre-install $pkgname.pre-upgrade $pkgname.post-upgrade
 	$pkgname.post-install"
 source="mkmntdirs.c
